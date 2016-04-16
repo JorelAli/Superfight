@@ -12,5 +12,10 @@ Here's the links to the main parts of the code which are worth looking at (The t
 * HTML & AngularJS page shown to clients - [index.html](https://github.com/Skepter/Superfight/blob/master/Superfight/client/index.html)
 * The css formatting for the cards - [client.css](https://github.com/Skepter/Superfight/blob/master/Superfight/client/Content/client.css)
 
+### Screenshots of it in action
+Screenshots can be viewed [here](https://github.com/Skepter/Superfight/tree/master/Screenshots).
+
+![Opponents cards](https://raw.githubusercontent.com/Skepter/Superfight/master/Screenshots/Opponents%20cards.PNG)
+
 ### Copyright
 Due to the copyright of Superfight, the cards have not been included in this repository.
