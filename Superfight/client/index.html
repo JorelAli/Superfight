@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <title>Superfight</title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Content/client.css" rel="stylesheet" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/client.js"></script>
+</head>
+<body>
+    <div ng-controller="myController">
+        <div class="container-fluid" ng-show="!usernameSubmitted">
+            <form novalidate>
+                <br />
+                Username:
+                &nbsp;
+                <input type="text" ng-model="username">
+                &nbsp;
+                <button ng-click="submitUsername()">Submit</button>
+            </form>
+        </div>
+        <div class="container-fluid" ng-show="usernameSubmitted">
+            <div class="row">
+                <div class="col-sm-6">
+                    <br />
+                    <p ng-show="opponentUsername == ''">{{username}} in room{{roomID}}</p>
+                    <p ng-show="opponentUsername != ''">{{username}} vs. {{opponentUsername}} in room{{roomID}}</p>
+                    <p ng-show="!hasOpponent">Waiting for opponent...</p>
+                    <table ng-show="!submitted && hasOpponent">
+                        <tr>
+                            <td ng-repeat="card in threeCards.white" align="center" style="padding: 10px">
+                                <button ng-class="{'whiteCardSelected' : card.selected, 'whiteCard' : !card.selected}" ng-click="selectCard(card.value, 'W')">{{card.value}}</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td ng-repeat="card in threeCards.black" align="center" style="padding: 10px">
+                                <button ng-class="{'blackCardSelected' : card.selected, 'blackCard' : !card.selected}" ng-click="selectCard(card.value, 'B')">{{card.value}}</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br />
+                                <button class="btn btn-success" ng-click="submit()" ng-disabled="cannotSubmit()">Submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <table ng-show="submitted">
+                        <tr><td>Your cards:</td></tr>
+                        <tr>
+                            <td ng-repeat="card in playerCards" align="center" style="padding: 10px">
+                                <button ng-class="{'whiteCardAfter' : card.isWhite, 'blackCardAfter' : !card.isWhite}" ng-disabled="submitted">{{card.value}}</button>
+                            </td>
+                        </tr>
+                        <tr ng-show="!opponentSubmitted"><td><br />Opponent still choosing...</td></tr>
+                        <tr ng-show="opponentSubmitted"><td><br />Opponent's cards:</td></tr>
+                        <tr>
+                            <td ng-repeat="card in opponentCards" align="center" style="padding: 10px">
+                                <button ng-class="{'whiteCardAfter' : card.isWhite, 'blackCardAfter' : !card.isWhite}" ng-disabled="submitted">{{card.value}}</button>
+                            </td>
+                        </tr>
+                        <tr ng-show="opponentSubmitted">
+                            <td>
+                                <br />
+                                <button class="btn btn-success" ng-click="newRound()">New round</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

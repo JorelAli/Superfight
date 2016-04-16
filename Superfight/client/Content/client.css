@@ -1,0 +1,31 @@
+﻿.blackCard, .whiteCard, .blackCardAfter, .whiteCardAfter, .selectedCard, .whiteCardSelected, .blackCardSelected {
+    width: 20vh;
+    height: 30vh;
+    border-radius: 2vh;
+    border-width: 0;
+    outline: none;
+}
+
+.blackCardSelected, .whiteCardSelected {
+    border-color: limegreen;
+    border-width: medium;
+    border-style: solid;
+}
+
+.blackCard, .blackCardAfter, .blackCardSelected {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.whiteCard, .whiteCardAfter, .whiteCardSelected {
+    color: #000000;
+    background-color: #e5e5e5;
+}
+
+.blackCard:hover, .blackCardSelected {
+    background-color: #222222;
+}
+
+.whiteCard:hover, .whiteCardSelected {
+    background-color: #dddddd;
+}
