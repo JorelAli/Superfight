@@ -1,3 +1,0 @@
-﻿# SuperfightServerV1.0
-
-
