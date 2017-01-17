@@ -1,5 +1,8 @@
 ﻿" use strict ";
 
+//Constants
+var clientIP = "192.168.1.163";
+
 //Import libraries
 var http = require('http');
 var path = require('path');
@@ -17,7 +20,7 @@ var io = socketio.listen(server);
 app.use(express.static(path.resolve(__dirname, 'client')));
 
 //Host the page
-server.listen(process.env.PORT || 1337, process.env.IP || "192.168.1.81", function () {
+server.listen(process.env.PORT || 1337, process.env.IP || clientIP, function () {
     var addr = server.address();
     console.log("Server listening at", addr.address + ":" + addr.port);
 });
